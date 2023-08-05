@@ -5,6 +5,7 @@ import com.demo.bookstore.service.BookStoreService;
 import com.demo.bookstore.service.dto.BookDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,7 @@ public class BookStoreController {
     @ApiOperation(value="Add New Book")
     @PostMapping("/add-new-book")
     @ResponseStatus(HttpStatus.CREATED)
+    @SecurityRequirement(name = "bookStoreAdmin")
     public void addBook(@Valid @RequestBody BookDto bookDto) {bookStoreService.addBook(bookDto);}
 
 
@@ -50,6 +52,7 @@ public class BookStoreController {
     @ApiOperation(value="Remove a book")
     @DeleteMapping("/remove-book/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @SecurityRequirement(name = "bookStoreAdmin")
     public void removeBook(@PathVariable Long id) {bookStoreService.removeBook(id);}
 
     /**
@@ -61,6 +64,7 @@ public class BookStoreController {
     @ApiOperation(value = "Update books quantity")
     @PutMapping("/update-book/{id}/{quantityToUpdate}")
     @ResponseStatus(HttpStatus.OK)
+    @SecurityRequirement(name = "bookStoreAdmin")
     public void updateBook(@PathVariable Long id,
                         @PathVariable int quantityToUpdate) {
         bookStoreService.updateBook(id, quantityToUpdate);
