@@ -23,6 +23,7 @@ BookStore uses MySql and consists of database named “bookstore” and a table 
   <li>(Search and Filter Functionality) Retrieve all books by Author and filter by price range: Endpoint: "/api/author-price-range". Get all the books for the given Author within the specified price range</li>
   <li>(Authentication and Authorization) Basic Authentication has been set on Swagger to allow only authenticated users to perform Adding/Removing a book and update the book quantity</li>
 </ol>
+
 ***
 
 ## Steps to Run the Application
